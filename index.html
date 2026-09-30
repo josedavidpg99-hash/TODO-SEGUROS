@@ -3,190 +3,402 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Todo Seguros</title>
+<title>NOVA · Centro de Seguros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#fafafa; --card:#ffffff; --txt:#262626; --mut:#8e8e8e;
-  --border:#dbdbdb; --border-soft:#efefef;
-  --blue:#0095f6; --gold:#b8860b; --gold-soft:#faf3df;
-  --green:#1c7c3c; --green-bg:#e8f6ee;
-  --chip:#efefef;
-  --ig-grad:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
-  --shadow:0 1px 4px rgba(0,0,0,.06);
-  --r:16px;
+  --bg:#F4F3EF;
+  --surface:#FFFFFF;
+  --surface-2:#FAF9F6;
+  --ink:#1B1A17;
+  --ink-2:#4E4B44;
+  --muted:#8B877C;
+  --line:#E7E4DB;
+  --line-soft:#EFEEE8;
+  --accent:#0C5B40;
+  --accent-deep:#08432F;
+  --accent-soft:#E9F3ED;
+  --sidebar:#161511;
+  --sidebar-2:#201E18;
+  --cream:#F5EFE2;
+  --gold:#C09A4A;
+  --r:20px;
+  --r-sm:14px;
+  --shadow:0 1px 2px rgba(27,26,23,.05),0 12px 32px -16px rgba(27,26,23,.18);
+  --shadow-sm:0 1px 2px rgba(27,26,23,.05);
 }
-*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
-body{margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  background:var(--bg); color:var(--txt); padding-bottom:84px; font-size:15px; line-height:1.45;}
-header.top{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96);
-  border-bottom:1px solid var(--border-soft); padding:12px 16px; display:flex; align-items:center; gap:10px;}
-header.top .ring{width:40px; height:40px; border-radius:50%; padding:2.5px; background:var(--ig-grad); flex:0 0 auto;}
-header.top .av{width:100%; height:100%; border-radius:50%; background:#fff; display:flex; align-items:center;
-  justify-content:center; font-weight:800; font-size:16px; color:var(--gold); border:2px solid #fff;}
-header.top h1{margin:0; font-size:16px; font-weight:700;}
-header.top h1 .g{color:var(--gold);}
-header.top p{margin:0; font-size:11px; color:var(--mut);}
-.tab{display:none; max-width:640px; margin:0 auto;}
-.tab.act{display:block;}
-.card{background:var(--card); border:1px solid var(--border-soft); border-radius:var(--r);
-  margin:12px 14px; padding:16px; box-shadow:var(--shadow);}
-.card h2{margin:0 0 8px; font-size:16px; font-weight:700;}
-.card h3{margin:16px 0 8px; font-size:14px; font-weight:700;}
-.card h3:first-child{margin-top:0;}
-.card p{margin:0 0 10px;}
-.small{font-size:12px; color:var(--mut);}
-.btn{display:block; width:100%; padding:13px; margin-top:12px; border:none; border-radius:14px;
-  font-size:15px; font-weight:700; cursor:pointer; font-family:inherit; text-align:center; text-decoration:none;}
-.btn-blue{background:var(--blue); color:#fff;}
-.btn-gold{background:linear-gradient(135deg,#d4a017,#b8860b); color:#fff;}
-.btn-ghost{background:var(--chip); color:var(--txt);}
-.btn-green{background:var(--green-bg); color:var(--green);}
-.btn-sm{width:auto; display:inline-block; padding:8px 16px; margin:0; font-size:13px; border-radius:20px;}
-.grid2{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:12px 14px;}
-.acceso{background:var(--card); border:1px solid var(--border-soft); border-radius:var(--r);
-  padding:16px 12px; text-align:center; box-shadow:var(--shadow); cursor:pointer; font-family:inherit; font-size:14px; font-weight:700; color:var(--txt);}
-.acceso .ico{font-size:26px; display:block; margin-bottom:8px;}
-.acceso small{display:block; font-size:11px; color:var(--mut); font-weight:400; margin-top:4px; line-height:1.4;}
-.fila{display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 0;
-  border-bottom:1px solid var(--border-soft); font-size:14px;}
-.fila:last-child{border-bottom:none;}
-.fila .t{font-weight:600;}
-.fila .s{font-size:12px; color:var(--mut); margin-top:2px;}
-nav.bottom{position:fixed; bottom:0; left:0; right:0; z-index:60; background:#fff;
-  border-top:1px solid var(--border-soft); display:flex; padding:6px 2px calc(8px + env(safe-area-inset-bottom));}
-nav.bottom button{flex:1; background:none; border:none; color:var(--mut); font-size:9.5px; font-weight:500;
-  display:flex; flex-direction:column; align-items:center; gap:3px; cursor:pointer; padding:5px 0; font-family:inherit;}
-nav.bottom button .ico{font-size:21px; line-height:1;}
-nav.bottom button.act{color:var(--txt); font-weight:700;}
-.badge{display:inline-block; font-size:10px; font-weight:700; padding:3px 9px; border-radius:10px;
-  background:var(--gold-soft); color:var(--gold); margin-bottom:8px;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:15px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--accent);color:#fff}
+
+/* ============ LAYOUT ============ */
+.app{display:flex;min-height:100vh}
+
+/* ============ SIDEBAR ============ */
+aside.side{
+  width:248px;flex:0 0 248px;background:var(--sidebar);color:#EDEAE2;
+  position:sticky;top:0;height:100vh;display:flex;flex-direction:column;
+  padding:28px 18px 20px;z-index:40;
+}
+.brand{display:flex;align-items:center;gap:12px;padding:2px 8px 22px;border-bottom:1px solid rgba(255,255,255,.08)}
+.brand .mark{
+  width:40px;height:40px;border-radius:12px;flex:0 0 40px;
+  background:linear-gradient(135deg,var(--accent) 0%,var(--accent-deep) 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Fraunces",serif;font-weight:700;font-size:20px;color:#fff;
+  box-shadow:0 6px 16px -6px rgba(12,91,64,.6);
+}
+.brand .name{font-family:"Fraunces",serif;font-size:21px;font-weight:600;letter-spacing:.14em;color:#F5F2E9;line-height:1}
+.brand .sub{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#8f8a7c;margin-top:5px}
+nav.menu{margin-top:22px;display:flex;flex-direction:column;gap:2px;flex:1}
+nav.menu .lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#6f6a5e;padding:10px 12px 6px}
+nav.menu button{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:left;
+  background:none;border:none;color:#B9B4A6;font:inherit;font-size:14px;font-weight:500;
+  padding:11px 12px;border-radius:12px;cursor:pointer;position:relative;
+  transition:background .18s ease,color .18s ease,transform .18s ease;
+}
+nav.menu button svg{width:19px;height:19px;flex:0 0 19px;opacity:.85}
+nav.menu button:hover{background:rgba(255,255,255,.05);color:#fff}
+nav.menu button.act{background:rgba(255,255,255,.09);color:#fff;font-weight:600}
+nav.menu button.act::before{
+  content:"";position:absolute;left:-18px;top:10px;bottom:10px;width:3px;border-radius:3px;
+  background:var(--gold);
+}
+.side .foot{padding:14px 12px 0;border-top:1px solid rgba(255,255,255,.08);font-size:11.5px;color:#6f6a5e;line-height:1.6}
+.side .foot b{color:#B9B4A6;font-weight:600}
+
+/* ============ MAIN ============ */
+main{flex:1;min-width:0;padding:34px 40px 90px}
+.wrap{max-width:880px;margin:0 auto}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
+.topbar .date{font-size:12.5px;color:var(--muted);letter-spacing:.04em}
+.topbar .pill{
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);background:var(--accent-soft);border:1px solid #D7E7DD;
+  padding:7px 14px;border-radius:999px;
+}
+
+.tab{display:none}
+.tab.act{display:block;animation:rise .38s cubic-bezier(.2,.7,.3,1)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1.hero,h2.title{font-family:"Fraunces",serif;font-weight:600;letter-spacing:-.01em;margin:0 0 10px;color:var(--ink)}
+h1.hero{font-size:clamp(30px,4.5vw,42px);line-height:1.12}
+h2.title{font-size:clamp(24px,3.4vw,32px);line-height:1.2}
+.lede{color:var(--ink-2);font-size:15.5px;max-width:60ch;margin:0 0 26px}
+
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:24px;box-shadow:var(--shadow-sm);margin-bottom:16px;
+}
+.card.flush{padding:8px 24px}
+
+/* quick access grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 8px}
+.mod{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:22px 20px;cursor:pointer;font:inherit;color:var(--ink);text-align:left;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+  display:flex;flex-direction:column;gap:14px;min-height:158px;
+}
+.mod:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#D8D4C8}
+.mod .ic{
+  width:42px;height:42px;border-radius:13px;background:var(--surface-2);
+  border:1px solid var(--line-soft);display:flex;align-items:center;justify-content:center;color:var(--accent);
+}
+.mod .ic svg{width:21px;height:21px}
+.mod b{font-size:15px;font-weight:600}
+.mod span{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:-10px}
+.mod.featured{background:linear-gradient(150deg,#12291F 0%,#0C5B40 130%);border-color:#0C5B40;color:#F2EFE6}
+.mod.featured span{color:#B9CFC2}
+.mod.featured .ic{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.14);color:#E8DFC8}
+.mod.featured:hover{border-color:#0C5B40}
+
+/* feature rows */
+.row{
+  display:flex;align-items:center;gap:16px;padding:15px 0;border-bottom:1px solid var(--line-soft);
+}
+.row:last-child{border-bottom:none}
+.row .fic{
+  width:44px;height:44px;flex:0 0 44px;border-radius:13px;background:var(--surface-2);
+  border:1px solid var(--line-soft);display:flex;align-items:center;justify-content:center;color:var(--accent);
+}
+.row .fic svg{width:20px;height:20px}
+.row .tx{flex:1;min-width:0}
+.row .tx b{display:block;font-size:14.5px;font-weight:600}
+.row .tx span{font-size:12.5px;color:var(--muted)}
+.tag{
+  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line);
+  padding:4px 10px;border-radius:999px;flex:0 0 auto;
+}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font:inherit;font-size:14.5px;font-weight:600;text-decoration:none;cursor:pointer;
+  padding:13px 26px;border-radius:999px;border:1px solid transparent;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+}
+.btn svg{width:16px;height:16px}
+.btn:hover{transform:translateY(-1px)}
+.btn-ink{background:var(--ink);color:#F7F5EF}
+.btn-ink:hover{background:#000;box-shadow:var(--shadow)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:var(--accent-deep);box-shadow:var(--shadow)}
+.btn-line{background:var(--surface);border-color:var(--line);color:var(--ink)}
+.btn-line:hover{border-color:#CFCABA;box-shadow:var(--shadow-sm)}
+.btn-sm{padding:9px 18px;font-size:13px}
+.btn-block{width:100%;margin-top:18px}
+
+.group{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:26px 0 4px}
+.group:first-child{margin-top:0}
+.note{font-size:12.5px;color:var(--muted);margin:14px 0 0}
+
+/* stat strip */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:18px 20px}
+.stat .n{font-family:"Fraunces",serif;font-size:30px;font-weight:600;color:var(--ink);line-height:1}
+.stat .l{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+/* bottom nav (mobile) */
+nav.bottom{display:none}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:760px){
+  aside.side{display:none}
+  main{padding:22px 18px 110px}
+  .grid{grid-template-columns:1fr 1fr}
+  .mod{min-height:140px;padding:18px 16px}
+  nav.bottom{
+    display:flex;position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(255,255,255,.94);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-top:1px solid var(--line);padding:8px 4px calc(10px + env(safe-area-inset-bottom));
+  }
+  nav.bottom button{
+    flex:1;background:none;border:none;color:var(--muted);font:inherit;font-size:9.5px;font-weight:500;
+    display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:6px 0;
+  }
+  nav.bottom button svg{width:21px;height:21px}
+  nav.bottom button.act{color:var(--accent);font-weight:700}
+}
+@media (max-width:420px){.grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
+<div class="app">
 
-<header class="top">
-  <div class="ring"><div class="av">TS</div></div>
-  <div>
-    <h1>Todo <span class="g">Seguros</span></h1>
-    <p>Tus herramientas y materiales en un solo lugar</p>
-  </div>
-</header>
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="side">
+    <div class="brand">
+      <div class="mark">N</div>
+      <div><div class="name">NOVA</div><div class="sub">Centro de seguros</div></div>
+    </div>
+    <nav class="menu" id="sideMenu">
+      <div class="lbl">Trabajo</div>
+      <button class="act" data-go="t-inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h5v-6h3v6h5v-9.5"/></svg>
+        Panel</button>
+      <button data-go="t-ilustrador">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 20v-7M12 20V6M17 20v-10"/></svg>
+        Ilustrador</button>
+      <button data-go="t-estudiar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>
+        Estudiar</button>
+      <div class="lbl">Recursos</div>
+      <button data-go="t-materiales">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7.5 11.5 4.5 4.5 4.5-4.5"/><path d="M4.5 20h15"/></svg>
+        Materiales</button>
+      <button data-go="t-presentaciones">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="4" width="18" height="11.5" rx="2"/><path d="M12 15.5V18M8.5 20.5h7"/></svg>
+        Presentaciones</button>
+      <button data-go="t-portal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg>
+        Mi portal</button>
+    </nav>
+    <div class="foot"><b>David Pacheco</b><br>Nova v2 · Todo en un solo lugar</div>
+  </aside>
 
-<!-- ============ INICIO ============ -->
-<section class="tab act" id="t-inicio">
-  <div class="card">
-    <span class="badge">TU CENTRO DE TRABAJO</span>
-    <h2>Hola, David</h2>
-    <p class="small">Aquí está todo lo de seguros: tu ilustrador, tu estudio, tus materiales para imprimir y tus presentaciones. Toca cualquier tarjeta para entrar.</p>
-  </div>
-  <div class="grid2">
-    <button class="acceso" onclick="go('t-ilustrador')"><span class="ico">📊</span>Ilustrador<small>Cotiza y presenta al cliente</small></button>
-    <button class="acceso" onclick="go('t-estudiar')"><span class="ico">📚</span>Estudiar<small>PrepSeguro Utah</small></button>
-    <button class="acceso" onclick="go('t-materiales')"><span class="ico">🖨️</span>Materiales<small>PDFs para descargar</small></button>
-    <button class="acceso" onclick="go('t-presentaciones')"><span class="ico">🎤</span>Presentaciones<small>CSK y AIL Plus</small></button>
-    <button class="acceso" onclick="window.open('https://josedavidpg99-hash.github.io/HERRAMIENTA-MAESTRA/','_blank')"><span class="ico">⚔️</span>Mi portal<small>Gladiadores</small></button>
-    <button class="acceso" onclick="go('t-materiales')"><span class="ico">📁</span>Para imprimir<small>Hojas y referidos</small></button>
-  </div>
-  <div class="card">
-    <h3>¿Qué hay aquí?</h3>
-    <div class="fila"><div><div class="t">Ilustrador</div><div class="s">Tu herramienta para cotizar coberturas y presentar al cliente.</div></div></div>
-    <div class="fila"><div><div class="t">Estudiar</div><div class="s">PrepSeguro Utah para repasar y practicar.</div></div></div>
-    <div class="fila"><div><div class="t">Materiales</div><div class="s">12 archivos listos para descargar e imprimir.</div></div></div>
-    <div class="fila"><div><div class="t">Presentaciones</div><div class="s">Child Safe Kit y AIL Plus.</div></div></div>
-  </div>
-</section>
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="wrap">
+      <div class="topbar">
+        <span class="pill">Tu centro de trabajo</span>
+        <span class="date" id="fecha"></span>
+      </div>
 
-<!-- ============ ILUSTRADOR ============ -->
-<section class="tab" id="t-ilustrador">
-  <div class="card">
-    <span class="badge">TU HERRAMIENTA</span>
-    <h2>Ilustrador</h2>
-    <p>Cotiza coberturas y presenta el plan al cliente, con modo de presentación incluido.</p>
-    <a class="btn btn-gold" href="https://josedavidpg99-hash.github.io/ILUSTRADOR/" target="_blank" rel="noopener">Abrir el Ilustrador</a>
-    <p class="small" style="margin-top:10px;">Se abre en una pestaña nueva. Úsalo frente al cliente en modo presentación.</p>
-  </div>
-</section>
+      <!-- ===== PANEL ===== -->
+      <section class="tab act" id="t-inicio">
+        <p class="eyebrow">Bienvenido de vuelta</p>
+        <h1 class="hero">Hola, David.<br>Todo tu negocio, aquí.</h1>
+        <p class="lede">Tu ilustrador, tu estudio, tus materiales y tus presentaciones — reunidos en un solo lugar, listos para usar frente al cliente.</p>
 
-<!-- ============ ESTUDIAR ============ -->
-<section class="tab" id="t-estudiar">
-  <div class="card">
-    <span class="badge">PREPÁRATE</span>
-    <h2>Estudiar</h2>
-    <p>PrepSeguro Utah: repasa los temas y practica para el examen de seguros.</p>
-    <a class="btn btn-blue" href="https://josedavidpg99-hash.github.io/HERRAMIENTA-DE-ESTUDIO/" target="_blank" rel="noopener">Abrir PrepSeguro</a>
-  </div>
-</section>
+        <div class="stats">
+          <div class="stat"><div class="n">12</div><div class="l">Materiales</div></div>
+          <div class="stat"><div class="n">2</div><div class="l">Presentaciones</div></div>
+          <div class="stat"><div class="n">6</div><div class="l">Módulos</div></div>
+        </div>
 
-<!-- ============ MATERIALES ============ -->
-<section class="tab" id="t-materiales">
-  <div class="card">
-    <span class="badge">DESCARGABLES</span>
-    <h2>Materiales</h2>
-    <p class="small">Toca "Descargar" en el archivo que necesites. Todos se guardan en tu teléfono o computadora.</p>
-  </div>
-  <div class="card">
-    <h3>🖨️ Para imprimir</h3>
-    <div class="fila"><div><div class="t">Child Safe Kit</div><div class="s">Hoja para plastificar</div></div><a class="btn btn-ghost btn-sm" href="materiales/Hoja_Plastificar_Child_Safe_Kit_AIL.pdf" download>Descargar</a></div>
-    <div class="fila"><div><div class="t">Kit Anti Asfixia</div><div class="s">Hoja para plastificar</div></div><a class="btn btn-ghost btn-sm" href="materiales/Hoja_Plastificar_Kit_Anti_Asfixia_AIL.pdf" download>Descargar</a></div>
-    <div class="fila"><div><div class="t">Carta de referidos</div><div class="s">Para plastificar</div></div><a class="btn btn-ghost btn-sm" href="materiales/Carta_Referidos_PLASTIFICAR.pdf" download>Descargar</a></div>
-    <div class="fila"><div><div class="t">Lista de referidos</div><div class="s">Para imprimir</div></div><a class="btn btn-ghost btn-sm" href="materiales/Lista_Referidos_IMPRIMIR.pdf" download>Descargar</a></div>
-    <div class="fila"><div><div class="t">Folleto de instrucciones</div><div class="s">En español</div></div><a class="btn btn-ghost btn-sm" href="materiales/Folleto_Instrucciones_Espa%C3%B1ol.pdf" download>Descargar</a></div>
-    <div class="fila"><div><div class="t">Cartas para imprimir</div><div class="s">Paquete de cartas</div></div><a class="btn btn-ghost btn-sm" href="materiales/Cartas%20Para%20imprimir.pdf" download>Descargar</a></div>
-    <div class="fila"><div><div class="t">Licencia de Jose Pacheco</div><div class="s">Documento</div></div><a class="btn btn-ghost btn-sm" href="materiales/JOSE_PACHECO_LICENSE.pdf" download>Descargar</a></div>
-  </div>
-  <div class="card">
-    <h3>💳 Tarjeta médica</h3>
-    <div class="fila"><div><div class="t">Tarjeta medicinal</div><div class="s">PDF</div></div><a class="btn btn-ghost btn-sm" href="materiales/Tarjeta%20medicinal.pdf" download>Descargar</a></div>
-    <div class="fila"><div><div class="t">Tarjeta médica</div><div class="s">Texto</div></div><a class="btn btn-ghost btn-sm" href="materiales/Tarjeta%20Medica.txt" download>Descargar</a></div>
-  </div>
-  <div class="card">
-    <h3>👨‍👩‍👧 Protección familiar</h3>
-    <div class="fila"><div><div class="t">Plan de Protección Familiar</div><div class="s">Español · PDF</div></div><a class="btn btn-ghost btn-sm" href="materiales/ESP%20Formato%20Plan%20de%20Proteccion%20Familiar.pdf" download>Descargar</a></div>
-    <div class="fila"><div><div class="t">Family Protection Plan</div><div class="s">English · PDF</div></div><a class="btn btn-ghost btn-sm" href="materiales/EN%20Family%20Protection%20Plan.pdf" download>Descargar</a></div>
-    <div class="fila"><div><div class="t">Guía de Información Familiar</div><div class="s">PDF</div></div><a class="btn btn-ghost btn-sm" href="materiales/Guia%20de%20Informacion%20Familiar.pdf" download>Descargar</a></div>
-  </div>
-</section>
+        <div class="grid">
+          <button class="mod featured" data-go="t-ilustrador">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 20v-7M12 20V6M17 20v-10"/></svg></span>
+            <b>Ilustrador</b><span>Cotiza coberturas y presenta el plan al cliente.</span>
+          </button>
+          <button class="mod" data-go="t-estudiar">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span>
+            <b>Estudiar</b><span>PrepSeguro Utah: repasa y practica.</span>
+          </button>
+          <button class="mod" data-go="t-materiales">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7.5 11.5 4.5 4.5 4.5-4.5"/><path d="M4.5 20h15"/></svg></span>
+            <b>Materiales</b><span>12 archivos listos para descargar.</span>
+          </button>
+          <button class="mod" data-go="t-presentaciones">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="4" width="18" height="11.5" rx="2"/><path d="M12 15.5V18M8.5 20.5h7"/></svg></span>
+            <b>Presentaciones</b><span>Child Safe Kit y AIL Plus.</span>
+          </button>
+          <button class="mod" data-go="t-portal">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg></span>
+            <b>Mi portal</b><span>Gladiadores: citas y seguimiento.</span>
+          </button>
+          <button class="mod" data-go="t-materiales">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></span>
+            <b>Para imprimir</b><span>Hojas, referidos y folletos.</span>
+          </button>
+        </div>
+      </section>
 
-<!-- ============ PRESENTACIONES ============ -->
-<section class="tab" id="t-presentaciones">
-  <div class="card">
-    <span class="badge">PARA PRESENTAR</span>
-    <h2>Presentaciones</h2>
-    <p class="small">Se abren en Google Slides, en una pestaña nueva.</p>
-  </div>
-  <div class="card">
-    <div class="fila"><div><div class="t">Child Safe Kit</div><div class="s">Presentación CSK</div></div><a class="btn btn-green btn-sm" href="https://docs.google.com/presentation/d/1HtOBruXBS3xrn5uUsRMhGAyJZRhI9bnd/edit" target="_blank" rel="noopener">Abrir</a></div>
-    <div class="fila"><div><div class="t">AIL Plus</div><div class="s">Presentación AIL Plus</div></div><a class="btn btn-green btn-sm" href="https://docs.google.com/presentation/d/1MpKfNUBLbcNR3ReYTFZQEyAToBEffU2q/edit" target="_blank" rel="noopener">Abrir</a></div>
-  </div>
-</section>
+      <!-- ===== ILUSTRADOR ===== -->
+      <section class="tab" id="t-ilustrador">
+        <p class="eyebrow">Tu herramienta</p>
+        <h2 class="title">Ilustrador</h2>
+        <p class="lede">Arma la cotización por coberturas y preséntala al cliente en lenguaje sencillo, con el modo de presentación incluido.</p>
+        <div class="card">
+          <div class="row">
+            <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 20v-7M12 20V6M17 20v-10"/></svg></div>
+            <div class="tx"><b>Ilustrador AIL + Presentación Familiar</b><span>Gastos finales, protección de ingresos, accidente, hospital y más.</span></div>
+          </div>
+          <a class="btn btn-accent btn-block" href="https://josedavidpg99-hash.github.io/ILUSTRADOR/" target="_blank" rel="noopener">Abrir el Ilustrador
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M20 14v6H4V4h6"/></svg></a>
+          <p class="note">Se abre en una pestaña nueva. Úsalo frente al cliente en modo presentación.</p>
+        </div>
+      </section>
 
-<!-- ============ MI PORTAL ============ -->
-<section class="tab" id="t-portal">
-  <div class="card">
-    <span class="badge">GLADIADORES</span>
-    <h2>Mi portal</h2>
-    <p>Tu portal de Gladiadores: citas, seguimientos, embudo, reportes y todo tu negocio.</p>
-    <a class="btn btn-blue" href="https://josedavidpg99-hash.github.io/HERRAMIENTA-MAESTRA/" target="_blank" rel="noopener">Abrir mi portal</a>
-  </div>
-</section>
+      <!-- ===== ESTUDIAR ===== -->
+      <section class="tab" id="t-estudiar">
+        <p class="eyebrow">Prepárate</p>
+        <h2 class="title">Estudiar</h2>
+        <p class="lede">PrepSeguro Utah: repasa los temas y practica para el examen de seguros.</p>
+        <div class="card">
+          <div class="row">
+            <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></div>
+            <div class="tx"><b>PrepSeguro Utah</b><span>Tu herramienta de estudio.</span></div>
+          </div>
+          <a class="btn btn-ink btn-block" href="https://josedavidpg99-hash.github.io/HERRAMIENTA-DE-ESTUDIO/" target="_blank" rel="noopener">Abrir PrepSeguro
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M20 14v6H4V4h6"/></svg></a>
+        </div>
+      </section>
 
-<nav class="bottom">
-  <button class="act" onclick="go('t-inicio',this)"><span class="ico">🏠</span>Inicio</button>
-  <button onclick="go('t-ilustrador',this)"><span class="ico">📊</span>Ilustrador</button>
-  <button onclick="go('t-estudiar',this)"><span class="ico">📚</span>Estudiar</button>
-  <button onclick="go('t-materiales',this)"><span class="ico">🖨️</span>Materiales</button>
-  <button onclick="go('t-presentaciones',this)"><span class="ico">🎤</span>Presenta</button>
-  <button onclick="go('t-portal',this)"><span class="ico">⚔️</span>Mi portal</button>
+      <!-- ===== MATERIALES ===== -->
+      <section class="tab" id="t-materiales">
+        <p class="eyebrow">Descargables</p>
+        <h2 class="title">Materiales</h2>
+        <p class="lede">Doce archivos listos para descargar e imprimir. Todo se guarda en tu teléfono o computadora.</p>
+
+        <div class="card flush">
+          <p class="group">Para imprimir</p>
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></div><div class="tx"><b>Child Safe Kit</b><span>Hoja para plastificar</span></div><span class="tag">PDF</span><a class="btn btn-line btn-sm" href="materiales/Hoja_Plastificar_Child_Safe_Kit_AIL.pdf" download>Descargar</a></div>
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></div><div class="tx"><b>Kit Anti Asfixia</b><span>Hoja para plastificar</span></div><span class="tag">PDF</span><a class="btn btn-line btn-sm" href="materiales/Hoja_Plastificar_Kit_Anti_Asfixia_AIL.pdf" download>Descargar</a></div>
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></div><div class="tx"><b>Carta de referidos</b><span>Para plastificar</span></div><span class="tag">PDF</span><a class="btn btn-line btn-sm" href="materiales/Carta_Referidos_PLASTIFICAR.pdf" download>Descargar</a></div>
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></div><div class="tx"><b>Lista de referidos</b><span>Para imprimir</span></div><span class="tag">PDF</span><a class="btn btn-line btn-sm" href="materiales/Lista_Referidos_IMPRIMIR.pdf" download>Descargar</a></div>
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></div><div class="tx"><b>Folleto de instrucciones</b><span>En español</span></div><span class="tag">PDF</span><a class="btn btn-line btn-sm" href="materiales/Folleto_Instrucciones_Espa%C3%B1ol.pdf" download>Descargar</a></div>
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></div><div class="tx"><b>Cartas para imprimir</b><span>Paquete de cartas</span></div><span class="tag">PDF</span><a class="btn btn-line btn-sm" href="materiales/Cartas%20Para%20imprimir.pdf" download>Descargar</a></div>
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></div><div class="tx"><b>Licencia de Jose Pacheco</b><span>Documento</span></div><span class="tag">PDF</span><a class="btn btn-line btn-sm" href="materiales/JOSE_PACHECO_LICENSE.pdf" download>Descargar</a></div>
+
+          <p class="group">Tarjeta médica</p>
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></div><div class="tx"><b>Tarjeta medicinal</b><span>PDF</span></div><span class="tag">PDF</span><a class="btn btn-line btn-sm" href="materiales/Tarjeta%20medicinal.pdf" download>Descargar</a></div>
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></div><div class="tx"><b>Tarjeta médica</b><span>Texto</span></div><span class="tag">TXT</span><a class="btn btn-line btn-sm" href="materiales/Tarjeta%20Medica.txt" download>Descargar</a></div>
+
+          <p class="group">Protección familiar</p>
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></div><div class="tx"><b>Plan de Protección Familiar</b><span>Español</span></div><span class="tag">PDF</span><a class="btn btn-line btn-sm" href="materiales/ESP%20Formato%20Plan%20de%20Proteccion%20Familiar.pdf" download>Descargar</a></div>
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></div><div class="tx"><b>Family Protection Plan</b><span>English</span></div><span class="tag">PDF</span><a class="btn btn-line btn-sm" href="materiales/EN%20Family%20Protection%20Plan.pdf" download>Descargar</a></div>
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></div><div class="tx"><b>Guía de Información Familiar</b><span>PDF</span></div><span class="tag">PDF</span><a class="btn btn-line btn-sm" href="materiales/Guia%20de%20Informacion%20Familiar.pdf" download>Descargar</a></div>
+        </div>
+      </section>
+
+      <!-- ===== PRESENTACIONES ===== -->
+      <section class="tab" id="t-presentaciones">
+        <p class="eyebrow">Para presentar</p>
+        <h2 class="title">Presentaciones</h2>
+        <p class="lede">Se abren en Google Slides, en una pestaña nueva.</p>
+        <div class="card flush">
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="4" width="18" height="11.5" rx="2"/><path d="M12 15.5V18M8.5 20.5h7"/></svg></div><div class="tx"><b>Child Safe Kit</b><span>Presentación CSK</span></div><a class="btn btn-accent btn-sm" href="https://docs.google.com/presentation/d/1HtOBruXBS3xrn5uUsRMhGAyJZRhI9bnd/edit" target="_blank" rel="noopener">Abrir</a></div>
+          <div class="row"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="4" width="18" height="11.5" rx="2"/><path d="M12 15.5V18M8.5 20.5h7"/></svg></div><div class="tx"><b>AIL Plus</b><span>Presentación AIL Plus</span></div><a class="btn btn-accent btn-sm" href="https://docs.google.com/presentation/d/1MpKfNUBLbcNR3ReYTFZQEyAToBEffU2q/edit" target="_blank" rel="noopener">Abrir</a></div>
+        </div>
+      </section>
+
+      <!-- ===== MI PORTAL ===== -->
+      <section class="tab" id="t-portal">
+        <p class="eyebrow">Gladiadores</p>
+        <h2 class="title">Mi portal</h2>
+        <p class="lede">Tu portal de Gladiadores: citas, seguimientos, embudo, reportes y todo tu negocio.</p>
+        <div class="card">
+          <div class="row">
+            <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg></div>
+            <div class="tx"><b>Portal Gladiadores</b><span>Citas, embudo y reportes.</span></div>
+          </div>
+          <a class="btn btn-ink btn-block" href="https://josedavidpg99-hash.github.io/HERRAMIENTA-MAESTRA/" target="_blank" rel="noopener">Abrir mi portal
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M20 14v6H4V4h6"/></svg></a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- ============ BOTTOM NAV (móvil) ============ -->
+<nav class="bottom" id="bottomNav">
+  <button class="act" data-go="t-inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h5v-6h3v6h5v-9.5"/></svg>Panel</button>
+  <button data-go="t-ilustrador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 20v-7M12 20V6M17 20v-10"/></svg>Ilustrador</button>
+  <button data-go="t-estudiar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>Estudiar</button>
+  <button data-go="t-materiales"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7.5 11.5 4.5 4.5 4.5-4.5"/><path d="M4.5 20h15"/></svg>Materiales</button>
+  <button data-go="t-presentaciones"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="4" width="18" height="11.5" rx="2"/><path d="M12 15.5V18M8.5 20.5h7"/></svg>Presenta</button>
+  <button data-go="t-portal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg>Portal</button>
 </nav>
 
 <script>
-function go(id,btn){
+// fecha en español
+try{
+  document.getElementById('fecha').textContent =
+    new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+}catch(e){}
+
+// navegación por pestañas (sidebar, tarjetas y barra inferior)
+function go(id){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('act'));
-  document.getElementById(id).classList.add('act');
-  document.querySelectorAll('nav.bottom button').forEach(b=>b.classList.remove('act'));
-  if(btn) btn.classList.add('act');
-  window.scrollTo(0,0);
+  var el=document.getElementById(id);
+  if(el){el.classList.add('act');}
+  document.querySelectorAll('[data-go]').forEach(b=>{
+    b.classList.toggle('act', b.getAttribute('data-go')===id && (b.tagName==='BUTTON' && b.closest('nav')));
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
 }
+document.querySelectorAll('[data-go]').forEach(b=>{
+  b.addEventListener('click',function(){go(this.getAttribute('data-go'));});
+});
 </script>
 </body>
 </html>
